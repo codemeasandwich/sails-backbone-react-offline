@@ -5,25 +5,41 @@
 //=====================================================
 
 require.config({
-  baseUrl: '../',
+  //baseUrl: '../',
   
 //++++++++++++++++++++++++++++++++++++++++++++++ paths
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
   
   paths: {
     
+    // CORE
+    
     jquery:["vendor/jquery/dist/jquery"],
     underscore:["vendor/lodash-amd/modern/main"],
     backbone:["vendor/backbone/backbone"],
+    react: "vendor/react/react-with-addons",
+    // PLUGINS
     
+    JSXTransformer: "js/JSXTransformer",
+    jsx: "vendor/requirejs-react-jsx/jsx",
+    text: "vendor/requirejs-text/text",
     
-    routes:["js/config/routes"]
+    // APP
+    
+    routes:["js/config/routes"],
+    
+    //PAGES
+    
+    pageIndex:["js/views/index"],
+    pageUser:["js/views/user"],
   },
   
 //+++++++++++++++++++++++++++++++++++++++++++++++ shim
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
   
  shim: {
+  
+    JSXTransformer: "JSXTransformer",
 		underscore: {
 			exports: '_'
 		},
@@ -34,7 +50,23 @@ require.config({
 			],
 			exports: 'Backbone'
 		}
-	}
+	},
+
+//+++++++++++++++++++++++++++++++++++++++++++++++ config
+//++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    config: {
+    jsx: {
+      fileExtension: ".jsx",
+      transformOptions: {
+        harmony: true,
+        stripTypes: false,
+        inlineSourceMap: true
+      },
+      usePragma: false
+    }
+  },
+  
 });
 
 //=====================================================
