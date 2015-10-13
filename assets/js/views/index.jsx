@@ -7,7 +7,14 @@
   function View() {
     this.AppView = React.createClass({
       render: function () {
-        return ( <div> <p> index! </p> <a href="#user/1">user page</a> </div> );
+      
+      if(navigator.onLine){
+       var networkState = <span className="label label-success">onLine</span>
+      } else {
+       var networkState = <span className="label label-warning">OFFLine</span>
+      }
+      
+        return ( <div> <p> index! {networkState} </p> <a href="#user/1">user page</a> </div> );
       }
     });
   }

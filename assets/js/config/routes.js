@@ -3,7 +3,15 @@
 define([ 'backbone' ], function(Backbone){
 
   var page = (pageName,opt) => {
+    
+   /* require(['jsx!js/views/components/reactLoader'], function(App){
+      var app = new App();
+      app.init();
+    });*/
+   //return; 
+    
     require(['jsx!page'+pageName], function(App){
+      console.log('jsx!page'+pageName,App)
       var app = new App();
       app.init(opt);
     });
